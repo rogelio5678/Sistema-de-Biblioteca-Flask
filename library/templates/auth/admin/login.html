@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+<div id="login">
+        <h3 class="text-center text-black pt-5">Administrador</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-black">Iniciar Sesión</h3>
+                            <div class="form-group">
+                                <label for="email" class="text-black">Correo Electronico:</label><br>
+                                <input type="email" name="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-black">Contraseña:</label><br>
+                                <input type="text" name="password" id="password" class="form-control" required>
+                            </div>
+                          <input type="submit" value="Iniciar Sesión" class="btn btn-primary">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'admin.html' %}
+
+{% block header %}
+    {% block title %}Usuarios{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+      <a type="button" class="btn btn-primary" href="{{ url_for('users.add_users') }}">Agregar</a>
+
+  </div>
+</div>
+    <div class="card text-center">
+  <div class="card-header">
+    Tus Usuarios
+
+  </div>
+
+  <div class="card-body">
+    <div>
+
+        </div>
+    <div>
+
+                {% if users == 0 %}
+                    <div class="alert alert-warning" role="alert">
+                      No tienes usuarios registrados
+                    </div>
+                {% else %}
+          <form action="{{ url_for('users.change_status') }}" method="post">
+          <input type="submit" name="delete" value="Inhabilitar seleccionados">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Matricula</th>
+                      <th scope="col">Correo Electronico</th>
+                      <th scope="col">Editar</th>
+                      <th scope="col">Inhabilitar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for user in users %}
+                    <tr>
+                      <th><input type="checkbox" name="id" value="{{ user['id'] }}"></th>
+                      <td>{{ user['enrollment'] }} </td>
+                      <td>{{ user['email'] }}</td>
+                        {% if user['status'] == 1 %}
+                        <td><a href="{{ url_for('users.change_status', id=user['id']) }}">Deshabilitar</a></td>
+                        {% elif user['status'] == 0 %}
+                        <td><a href="{{ url_for('users.change_status', id=user['id']) }}">Habilitar</a></td>
+                        {% endif %}
+                      <td>{{ user['enrollment'] }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </form>
+                {% endif %}
+            </div>
+  </div>
+</div>
+{% endblock %}

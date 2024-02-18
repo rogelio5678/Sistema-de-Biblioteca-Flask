@@ -1,0 +1,68 @@
+{% extends 'admin.html' %}
+
+{% block header %}
+    {% block title %}Usuarios{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+
+      <a type="button" class="btn btn-primary" href="{{ url_for('users.index') }}">Regresar</a>
+
+  </div>
+  </div>
+<div class="card text-center">
+  <div class="card-header">
+
+      Agregar desde Excel
+  </div>
+  <div class="card-body">
+    <div>
+        <a href="{{ url_for('static', filename='up_users.xlsx') }}" download="sample-file">Descargar archivo de muestra</a>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="type" value="file">
+            <input required name="file" id="file" type="file" value="Seleccionar archivo">
+            <div>
+                <input type="submit" name="add" value="Agregar Usuarios">
+            </div>
+        </form>
+    </div>
+    <div>
+    </div>
+
+  <div class="card-body">
+
+                <table class="table">
+
+
+					<tr class="info">
+						<th>Matricula</th>
+						<th>Correo Electronico</th>
+
+				    </tr>
+                </table>
+                <form method="post">
+                <input type="hidden" name="type" value="user">
+                <table class="table bg-info"  id="tabla">
+					<tr class="fila-fija">
+						<td><input required type="text" name="enrollment" id="enrollment"></td>
+						<td><input required type="email" name="email" id="email"></td>
+						<td class="eliminar"><input type="button"   value="Menos -"/></td>
+					</tr>
+				</table>
+                <div class="btn-der">
+					<input type="submit" name="add" value="Agregar Usuario" class="btn btn-info"/>
+                    <button id="adicional" name="adicional" type="button" class="btn btn-warning"> Más + </button>
+
+				</div>
+
+				<div class="btn-der">
+
+
+				</div>
+			</form>
+            </div>
+  </div>
+</div>
+{% endblock %}

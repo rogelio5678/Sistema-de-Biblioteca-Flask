@@ -2,11 +2,10 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for, session
 )
 from werkzeug.exceptions import abort
-from library.auth import admin_access
-from library.auth import admin_login_required
+from library.bp.auth import admin_access
+from library.bp.auth import admin_login_required
 from library.db import get_db
 import pandas as pd
-import email_validator
 
 bp = Blueprint('users', __name__, url_prefix='/users')
 

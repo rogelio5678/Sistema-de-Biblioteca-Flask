@@ -22,13 +22,13 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
-    from . import auth
+    from library.bp import auth
     app.register_blueprint(auth.bp)
 
-    from . import users
+    from library.bp import users
     app.register_blueprint(users.bp)
 
-    from . import books
+    from library.bp import books
     app.register_blueprint(books.bp)
     
     return app
